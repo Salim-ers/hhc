@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link, { useLinkStatus } from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
@@ -13,6 +13,7 @@ import {
   Images,
   Inbox,
   LayoutDashboard,
+  LoaderCircle,
   LogOut,
   MapPin,
   Menu,
@@ -27,6 +28,12 @@ import {
 import { Monogram } from "@/components/brand/monogram";
 import { logout } from "@/app/admin/_actions/auth";
 import { cn } from "@/lib/utils";
+
+/** Indicateur sur le lien cliqué tant que la page n'est pas arrivée ; n'apparaît que si elle tarde (voir .nav-pending). */
+function NavPending({ className }: { className?: string }) {
+  const { pending } = useLinkStatus();
+  return pending ? <LoaderCircle aria-hidden className={cn("nav-pending h-4 w-4 animate-spin text-or-profond", className)} /> : null;
+}
 
 type NavLink = { href: string; label: string; icon: React.ComponentType<{ className?: string }>; badge?: number; ownerOnly?: boolean };
 
@@ -97,6 +104,7 @@ export function AdminShell({
                   >
                     <l.icon className={cn("h-[1.1rem] w-[1.1rem]", isActive(l.href) ? "text-champagne" : "text-taupe")} />
                     <span className="flex-1">{l.label}</span>
+                    <NavPending />
                     {!!l.badge && <span className="rounded-full bg-champagne px-2 py-0.5 text-xs font-semibold text-noir">{l.badge}</span>}
                   </Link>
                 </li>
@@ -185,6 +193,7 @@ export function AdminShell({
           >
             <q.icon className={cn("h-5 w-5", isActive(q.href) && "text-or-profond")} />
             {q.label}
+            <NavPending className="absolute left-[calc(50%+0.6rem)] top-2.5 h-3.5 w-3.5" />
             {!!q.badge && <span className="absolute right-[28%] top-2 h-2 w-2 rounded-full bg-champagne" />}
           </Link>
         ))}

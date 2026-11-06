@@ -40,6 +40,9 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     serverActions: { bodySizeLimit: "12mb" },
+    // Une page d'administration déjà vue s'affiche instantanément pendant 30 s au retour.
+    // Toute modification enregistrée vide ce cache (revalidation dans actions-core).
+    staleTimes: { dynamic: 30 },
   },
   async redirects() {
     return legacyRedirects.map(([source, destination]) => ({ source, destination, permanent: true }));

@@ -108,7 +108,7 @@ Les politiques ont été testées : brouillons, offres expirées, comptes, sessi
 1. Pousser le projet sur GitHub, puis *Add New Project* sur Vercel.
 2. **Storage → Create → Blob** : ajoute automatiquement `BLOB_READ_WRITE_TOKEN`.
 3. Renseigner les variables de `.env.example` (Production + Preview).
-4. Déployer. Les pages publiques sont pré-générées, puis rafraîchies automatiquement à chaque publication dans l'administration (invalidation du cache, aucun redéploiement).
+4. Déployer. Les fonctions serveur tournent à Francfort (`vercel.json` → `fra1`), à côté de la base Neon : sans cela, Vercel les place aux États-Unis et chaque requête traverse l'Atlantique. Les pages publiques sont pré-générées, puis rafraîchies automatiquement à chaque publication dans l'administration (invalidation du cache, aucun redéploiement).
 
 **Démonstration express** : un déploiement sans aucune variable affiche le site complet en mode démonstration.
 

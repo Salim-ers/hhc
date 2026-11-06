@@ -271,6 +271,19 @@
   }
 }
 
+/* Administration : indicateur de navigation, montré seulement si la page tarde à arriver (> 150 ms). */
+.nav-pending {
+  opacity: 0;
+  animation:
+    nav-pending-in 0.2s ease 0.15s forwards,
+    spin 1s linear infinite;
+}
+@keyframes nav-pending-in {
+  to {
+    opacity: 1;
+  }
+}
+
 /* Lenis */
 html.lenis,
 html.lenis body {
