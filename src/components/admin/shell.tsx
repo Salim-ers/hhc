@@ -96,6 +96,7 @@ export function AdminShell({
                 <li key={l.href}>
                   <Link
                     href={l.href}
+                    prefetch
                     aria-current={isActive(l.href) ? "page" : undefined}
                     className={cn(
                       "flex min-h-11 items-center gap-3 rounded-lg px-3 text-[0.95rem] transition-colors",
@@ -189,6 +190,7 @@ export function AdminShell({
           <Link
             key={q.href}
             href={q.href}
+            prefetch
             className={cn("relative flex min-h-16 flex-col items-center justify-center gap-1 text-[0.72rem]", isActive(q.href) ? "text-encre" : "text-taupe")}
           >
             <q.icon className={cn("h-5 w-5", isActive(q.href) && "text-or-profond")} />
