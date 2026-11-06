@@ -7,7 +7,7 @@
 const u = (id: string) => `https://images.unsplash.com/photo-${id}`;
 
 export const stock = {
-  heroHairMotion: { url: u("1567582173070-228d1cd84c72"), alt: "Chevelure blonde caramel en mouvement sur fond sombre" },
+  heroStylist: { url: u("1562322140-8baeececf3df"), alt: "Coiffeuse souriante réalisant un brushing à la brosse et au sèche-cheveux" },
   profileGoldLight: { url: u("1515138692129-197a2c608cfd"), alt: "Profil de femme dont la chevelure capte une lumière dorée" },
   profileDark: { url: u("1610659128929-fa69328744e2"), alt: "Portrait de profil, cheveux bruns, lumière douce" },
   portraitBlonde: { url: u("1524504388940-b1c1722653e1"), alt: "Portrait éditorial, cheveux blonds ondulés" },

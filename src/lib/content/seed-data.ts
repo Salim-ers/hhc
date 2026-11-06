@@ -456,7 +456,7 @@ export const seedFaqs = [
 ];
 
 export const seedGallery: { image: { url: string; alt: string }; category: string; layout: "portrait" | "landscape" | "tall" | "square" }[] = [
-  { image: stock.heroHairMotion, category: "couleur", layout: "tall" },
+  { image: stock.curler, category: "coiffure", layout: "tall" },
   { image: stock.balayageBlonde, category: "balayage", layout: "portrait" },
   { image: stock.chignonJewel, category: "coiffure", layout: "portrait" },
   { image: stock.menScissors, category: "homme", layout: "square" },

@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: introScript }} />
         {/* Sans JavaScript, les éléments animés (data-reveal) s'affichent directement dans leur état final. */}
         <noscript>
-          <style>{"[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}"}</style>
+          <style>{"[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}[data-cover]{display:none!important}"}</style>
         </noscript>
       </head>
       <body>{children}</body>

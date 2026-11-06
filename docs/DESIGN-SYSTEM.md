@@ -2,9 +2,9 @@
 
 ## Idée directrice
 
-Un site clair et éditorial, comme un magazine de coiffure : de grandes photographies, une typographie sûre d'elle, et les informations utiles (téléphone, horaires, déplacement) plutôt que des décorations. La signature de la marque, « La coiffure autrement », sert de titre d'accueil. La forme récurrente est **l'arche du miroir** (classe `.arch`) pour les portraits ; autour, tout est doux et arrondi : panneaux (`.panel`), cartes, boutons en pilule, champs de formulaire.
+Un site clair et chaleureux : des photographies lumineuses et humaines (une coiffeuse au travail plutôt qu'un mannequin de studio), une typographie sûre d'elle, et les informations utiles (téléphone, horaires, déplacement) plutôt que des décorations. Le titre d'accueil dit concrètement ce que fait la marque : « Votre coiffeuse vient chez vous. » La forme récurrente est **l'arche du miroir** (classe `.arch`) pour les portraits ; autour, tout est doux et arrondi : panneaux (`.panel`), cartes, boutons en pilule, champs de formulaire.
 
-Ce qui a été volontairement retiré, car typique des gabarits générés : fond noir + or + halo lumineux en ouverture, photo inclinée en superposition, pastilles d'arguments, flèche dans un rond, mèches dorées décoratives, boutons « magnétiques », surtitres à tiret, numérotation « 01 — », indicateur « Découvrir », monogrammes en filigrane, tirets cadratins, titres mi-romains mi-italiques.
+Ce qui a été volontairement retiré, car typique des gabarits générés : fond noir + or + halo lumineux en ouverture, photo de mannequin sombre et dramatique, titre-slogan abstrait en très grand corps, photo inclinée en superposition, pastilles d'arguments, flèche dans un rond, mèches dorées décoratives, boutons « magnétiques », surtitres à tiret, numérotation « 01 — », indicateur « Découvrir », monogrammes en filigrane, tirets cadratins, titres mi-romains mi-italiques.
 
 ## Couleurs (`src/app/globals.css`, `@theme`)
 
@@ -44,7 +44,7 @@ Ce qui a été volontairement retiré, car typique des gabarits générés : fon
 | Effet | Où |
 |---|---|
 | Titres révélés mot à mot (`TextReveal`), légère rotation comme une mèche qui retombe | Tous les titres |
-| Photo panoramique qui s'ouvre depuis une capsule, léger zoom arrière, parallaxe au défilement | Hero |
+| Photo dévoilée par six bandes verticales qui se lèvent l'une après l'autre (comme des mèches), léger zoom arrière, parallaxe au défilement | Hero |
 | Remplissage qui monte comme un liquide, flèche qui avance | Boutons |
 | Section figée, cartes qui défilent horizontalement au rythme du scroll | Prestations signatures (≥ 1024 px) ; carrousel à balayer sur mobile |
 | Fil doré qui se remplit au défilement | La coiffure à domicile |
@@ -62,9 +62,9 @@ Règles :
 
 - Conteneur `max-width: 100rem`, gouttière fluide `clamp(1.25rem, 4vw, 4rem)`.
 - Au-delà de 2200 px puis 3000 px (grands moniteurs, téléviseurs), la taille de base passe à 112,5 % puis 140 % : toute la mise en page s'agrandit proportionnellement.
-- Hero : photo panoramique arrondie sous l'en-tête, puis le titre (gauche) et le texte, le bouton et le téléphone (droite), puis une ligne horaires / déplacement / lien vers les tarifs. Le tout tient dans un écran de 1440 × 900.
+- Hero : à gauche le titre, le texte, le bouton de rendez-vous et le téléphone, puis le déplacement, les horaires et le lien vers les tarifs ; à droite une grande photo arrondie sur toute la hauteur de l'écran (plafonnée à 64 rem sur les très grands écrans) ; la taille du titre suit la largeur de sa colonne (unités `cqw`), il reste donc sur deux lignes à toutes les largeurs. Sans JavaScript, les bandes de dévoilement sont masquées (`data-cover`).
 - En-tête clair (texte encre) ; au défilement, capsule claire flottante. En-têtes des pages intérieures : panneau ivoire arrondi.
-- Mobile : photo, titre, texte, bouton et téléphone visibles sans défiler ; menu plein écran clair ; barre d'action « Appeler / Prendre rendez-vous » en pilule.
+- Mobile : la photo passe au-dessus ; photo, titre, texte et bouton visibles sans défiler ; menu plein écran clair ; barre d'action « Appeler / Prendre rendez-vous » en pilule.
 
 ## Architecture de l'information (une page = un rôle)
 

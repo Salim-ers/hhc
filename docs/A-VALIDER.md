@@ -43,7 +43,7 @@ Tout ce qui est listé ici est **déjà en place dans le site**, mais repose sur
 - [ ] **Sections retirées** de l'accueil (coloriste, aperçu des offres), de la page À propos (atouts) et de Prestations (bloc « à domicile ») : leurs informations existent déjà ailleurs (page Coloriste, page Offres, section « La coiffure à domicile », FAQ, Zone d'intervention).
 - [ ] **Page Tarifs fusionnée** dans « Prestations & tarifs » : `/tarifs` redirige vers `/prestations` (redirection permanente, ancres conservées). Les liens enregistrés en base vers `/tarifs#…` continuent donc de fonctionner.
 - [ ] **Table `expertises`** : plus affichée sur le site (la page fusionnée utilise les catégories de tarifs et leurs photos). Conservée en base, sans migration.
-- [ ] **Hero** : titre « La coiffure autrement. » (signature du logo) et grande photo **au format paysage** ; le téléphone, les horaires et le déplacement viennent des *Paramètres*. Une vraie photo d'Angèle au travail serait idéale ici.
+- [ ] **Hero** : titre « Votre coiffeuse vient chez vous. » et photo temporaire d'une coiffeuse en plein brushing (Unsplash, ce n'est pas Angèle). Le téléphone, les horaires et le déplacement viennent des *Paramètres*. Une vraie photo d'Angèle au travail, chez une cliente et en lumière naturelle, serait idéale ici. Si la base a déjà été initialisée, l'ancien titre et l'ancienne photo restent en place : les changer dans *Textes & pages → Accueil → Hero*.
 
 ## Technique
 

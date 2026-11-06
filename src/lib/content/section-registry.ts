@@ -78,19 +78,19 @@ export const PAGES: PageDef[] = [
         label: "Hero (haut de la page d'accueil)",
         locked: true,
         description:
-          "Une grande photo panoramique (format paysage conseillé), le titre, puis le téléphone, les horaires et le déplacement repris des Paramètres.",
+          "Le titre et le texte à gauche, une grande photo à droite (au-dessus sur mobile). Le déplacement, les horaires et le téléphone sont repris des Paramètres.",
         fields: [
           { name: "title", label: "Titre (une ligne par retour à la ligne)", type: "textarea", rows: 3 },
           subtitle,
-          { name: "image", label: "Photo panoramique (format paysage)", type: "image" },
+          { name: "image", label: "Photo (idéalement Angèle au travail, sujet au centre)", type: "image" },
           { name: "ctaPrimary", label: "Bouton principal", type: "link" },
-          { name: "ctaSecondary", label: "Lien secondaire (sous le titre, à droite)", type: "link" },
+          { name: "ctaSecondary", label: "Lien secondaire (sous les horaires)", type: "link" },
         ],
         defaults: {
-          title: "La coiffure\nautrement.",
+          title: "Votre coiffeuse\nvient chez vous.",
           subtitle:
-            "Angèle, maître artisan coiffeuse, coloriste et visagiste, vient chez vous avec tout le matériel d'un salon : coupe, couleur et coiffage pour toute la famille.",
-          image: stock.heroHairMotion,
+            "Angèle, maître artisan coiffeuse, coloriste et visagiste, arrive avec tout le matériel d'un salon : coupe, couleur et coiffage pour toute la famille.",
+          image: stock.heroStylist,
           ctaPrimary: { label: "Prendre rendez-vous", href: "/contact" },
           ctaSecondary: { label: "Voir les prestations et les tarifs", href: "/prestations" },
         },
