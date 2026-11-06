@@ -29,7 +29,7 @@ export function LegalBody({ text }: { text: string }) {
 export function LegalShell({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <>
-      <PageIntro eyebrow="Informations" title={title} compact />
+      <PageIntro title={title} />
       <section className="bg-lin py-20 md:py-28">
         <div className="container-x">{children}</div>
       </section>

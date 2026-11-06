@@ -2,8 +2,7 @@ export type NavItem = { key: string; label: string; href: string };
 
 /** Navigation principale (l'ordre est celui de l'en-tête). */
 export const MAIN_NAV: NavItem[] = [
-  { key: "prestations", label: "Prestations", href: "/prestations" },
-  { key: "tarifs", label: "Tarifs", href: "/tarifs" },
+  { key: "prestations", label: "Prestations & tarifs", href: "/prestations" },
   { key: "coloriste-visagiste", label: "Coloriste & visagiste", href: "/coloriste-visagiste" },
   { key: "offres", label: "Offres", href: "/forfaits-offres" },
   { key: "galerie", label: "Galerie", href: "/galerie" },

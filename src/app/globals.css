@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 /* ══════════════════════════════════════════════════════════════════════
-   HAIR HOME CONCEPT — Design system « Luxury Hair Editorial »
+   HAIR HOME CONCEPT — Design system « Le miroir »
+   Le miroir de coiffeuse s'invite chez vous : une arche signature,
+   des formes douces et arrondies, un mouvement fluide comme une chevelure.
    ══════════════════════════════════════════════════════════════════════ */
 
 @theme {
@@ -31,8 +33,11 @@
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-silk: cubic-bezier(0.65, 0, 0.35, 1);
 
-  /* Rayon « arc HHC » : l'arc du C du monogramme, utilisé sur un seul angle */
-  --radius-arc: 999px;
+  /* Arrondis : des « cases » douces, jamais d'angle vif sur un bloc visible */
+  --radius-chip: 999px;
+  --radius-field: 1rem;
+  --radius-card: 1.75rem;
+  --radius-media: 2rem;
 
   --breakpoint-3xl: 1920px;
 }
@@ -52,6 +57,18 @@
     scroll-padding-top: calc(var(--header-h) + 1rem);
   }
 
+  /* Grands moniteurs, téléviseurs : toute la mise en page (en rem) s'agrandit proportionnellement. */
+  @media (min-width: 2200px) {
+    html {
+      font-size: 112.5%;
+    }
+  }
+  @media (min-width: 3000px) {
+    html {
+      font-size: 140%;
+    }
+  }
+
   body {
     background: var(--color-lin);
     color: var(--color-encre);
@@ -66,10 +83,10 @@
     color: var(--color-noir);
   }
 
+  /* Le contour suit l'arrondi de l'élément (pas de border-radius imposé ici). */
   :focus-visible {
     outline: 2px solid var(--color-champagne);
     outline-offset: 3px;
-    border-radius: 2px;
   }
 
   h1,
@@ -99,91 +116,74 @@
 @layer components {
   .container-x {
     width: 100%;
-    max-width: 1600px;
+    max-width: 100rem;
     margin-inline: auto;
     padding-inline: var(--gutter);
   }
 
-  /* Échelle typographique éditoriale (rapport ~1.333, display en clamp) */
+  /* Échelle typographique éditoriale */
   .t-display {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(2.9rem, 1.3rem + 6.4vw, 8.75rem);
-    line-height: 0.95;
+    font-size: clamp(2.75rem, 1.15rem + 5.3vw, 7.5rem);
+    line-height: 0.98;
     letter-spacing: -0.03em;
   }
   .t-h1 {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(2.6rem, 1.5rem + 4.6vw, 6.5rem);
-    line-height: 0.98;
+    font-size: clamp(2.5rem, 1.5rem + 4vw, 5.75rem);
+    line-height: 1;
     letter-spacing: -0.02em;
   }
   .t-h2 {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(2.1rem, 1.4rem + 2.9vw, 4.5rem);
-    line-height: 1.02;
+    font-size: clamp(2rem, 1.4rem + 2.5vw, 4rem);
+    line-height: 1.04;
     letter-spacing: -0.015em;
   }
   .t-h3 {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
-    line-height: 1.1;
+    font-size: clamp(1.45rem, 1.2rem + 0.9vw, 2.05rem);
+    line-height: 1.12;
   }
   .t-lead {
-    font-size: clamp(1.08rem, 0.98rem + 0.45vw, 1.4rem);
+    font-size: clamp(1.06rem, 0.98rem + 0.4vw, 1.32rem);
     line-height: 1.6;
     font-weight: 300;
-  }
-
-  /* Surtitre : italique serif, en minuscules — jamais de capitales espacées */
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.2rem);
-    line-height: 1.2;
-    color: var(--color-or-profond);
-  }
-  .eyebrow::before {
-    content: "";
-    width: 2.25rem;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.7;
-  }
-  .on-dark .eyebrow,
-  .eyebrow.on-dark {
-    color: var(--color-champagne);
   }
 
   .on-dark {
     color: var(--color-ivoire);
   }
   .on-dark .muted {
-    color: color-mix(in oklab, var(--color-ivoire) 68%, transparent);
+    color: color-mix(in oklab, var(--color-ivoire) 70%, transparent);
   }
   .muted {
     color: var(--color-taupe);
   }
 
-  /* Filet doré */
-  .rule-gold {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-champagne) 20%, var(--color-champagne) 80%, transparent);
-    opacity: 0.6;
+  /* Les sections colorées sont des panneaux arrondis posés sur le fond lin. */
+  .panel {
+    margin: 0.5rem;
+    border-radius: 2rem;
+  }
+  @media (min-width: 768px) {
+    .panel {
+      margin: 0.75rem;
+      border-radius: 3rem;
+    }
   }
 
-  /* L'arc HHC : un seul angle arrondi, comme le C du monogramme */
-  .arc-tl {
-    border-top-left-radius: min(50%, 22rem);
-  }
-  .arc-tr {
-    border-top-right-radius: min(50%, 22rem);
+  /*
+   * L'arche du miroir : sommet en plein cintre, base aux angles adoucis.
+   * --arch-y = (largeur / 2) / hauteur, pour un demi-cercle parfait selon le format.
+   */
+  .arch {
+    --arch-y: 37.5%; /* format 3:4 */
+    border-radius: 50% 50% var(--radius-card) var(--radius-card) / var(--arch-y) var(--arch-y) var(--radius-card) var(--radius-card);
   }
 
   /* Points de conduite de la carte des tarifs */
@@ -209,16 +209,9 @@
     mix-blend-mode: overlay;
   }
 
-  /* Reflet métallique (loader, monogramme) */
+  /* Reflet métallique (loader) */
   .shine {
-    background: linear-gradient(
-      100deg,
-      #9b7410 0%,
-      #d8a301 30%,
-      #f7e7b0 46%,
-      #d8a301 58%,
-      #8e6a0c 100%
-    );
+    background: linear-gradient(100deg, #9b7410 0%, #d8a301 30%, #f7e7b0 46%, #d8a301 58%, #8e6a0c 100%);
     background-size: 250% 100%;
   }
 
@@ -241,6 +234,57 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+
+  /* Défilement infini (galerie de l'accueil) : la piste contient deux fois les images. */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--marquee-duration, 60s) linear infinite;
+  }
+  .marquee[data-direction="reverse"] {
+    animation-direction: reverse;
+  }
+  .marquee-host:hover .marquee,
+  .marquee-host:focus-within .marquee {
+    animation-play-state: paused;
+  }
+
+  /* Halo de lumière qui respire derrière le miroir du Hero */
+  .halo {
+    animation: halo 9s var(--ease-silk) infinite alternate;
+  }
+
+  /* FAQ : ouverture fluide (navigateurs récents ; ailleurs, ouverture instantanée) */
+  .faq-item {
+    interpolate-size: allow-keywords;
+  }
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 0.5s var(--ease-luxe),
+      content-visibility 0.5s allow-discrete;
+  }
+  .faq-item[open]::details-content {
+    block-size: auto;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes halo {
+  from {
+    transform: translate3d(-4%, 3%, 0) scale(1);
+    opacity: 0.55;
+  }
+  to {
+    transform: translate3d(5%, -4%, 0) scale(1.12);
+    opacity: 0.9;
+  }
 }
 
 /* Lenis */
@@ -256,6 +300,20 @@ html.lenis body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+    padding-inline: var(--gutter);
+  }
+  .marquee [data-copy] {
+    display: none;
+  }
+  .marquee-row {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .halo {
+    animation: none;
+  }
   *,
   *::before,
   *::after {

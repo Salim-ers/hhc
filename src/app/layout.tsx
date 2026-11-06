@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const s = await getSettings();
   return {
     metadataBase: new URL(siteUrl()),
-    title: { default: `${s.seo.siteName} — Coiffure haut de gamme à domicile à Troyes`, template: `%s | ${s.seo.siteName}` },
+    title: { default: `${s.seo.siteName} | Coiffure haut de gamme à domicile à Troyes`, template: `%s | ${s.seo.siteName}` },
     description: s.seo.defaultDescription,
     applicationName: s.seo.siteName,
     authors: [{ name: s.business.name }],
@@ -52,6 +52,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className={`${bodoni.variable} ${jost.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: introScript }} />
+        {/* Sans JavaScript, les éléments animés (data-reveal) s'affichent directement dans leur état final. */}
+        <noscript>
+          <style>{"[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}"}</style>
+        </noscript>
       </head>
       <body>{children}</body>
     </html>

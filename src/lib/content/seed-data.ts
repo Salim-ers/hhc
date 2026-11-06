@@ -178,7 +178,7 @@ export const seedCategories: SeedCategory[] = [
   {
     slug: "forfaits",
     label: "Forfaits",
-    intro: "Les formules d'entretien et de fidélité. Retrouvez le détail de chaque offre sur la page Forfaits & offres.",
+    intro: "Les formules d'entretien et de fidélité, présentées sur la page Forfaits & offres.",
     services: [],
   },
 ];
@@ -322,7 +322,7 @@ export const seedOffers: SeedOffer[] = [
     items: ["Sur l'ensemble des prestations"],
     conditions: "Uniquement sur présentation de la carte étudiante.",
     ctaLabel: "Voir les tarifs étudiants",
-    ctaHref: "/tarifs#etudiant",
+    ctaHref: "/prestations#etudiant",
     status: "published",
   },
   {
@@ -343,7 +343,7 @@ export const seedOffers: SeedOffer[] = [
     title: "L'offre du mois",
     description: "Chaque mois, une remise ou une prestation offerte : découvrez l'offre en cours.",
     items: [],
-    ctaLabel: "Découvrir",
+    ctaLabel: "En profiter",
     ctaHref: "/forfaits-offres",
     // Non confirmée : reste en brouillon tant qu'Angèle ne l'a pas définie et publiée.
     status: "draft",
@@ -525,7 +525,7 @@ export const defaultSettings = {
     whatsappNumber: "",
   },
   hours: {
-    summary: "Du lundi au samedi, de 9h à 20h — journée continue",
+    summary: "Du lundi au samedi, de 9h à 20h, en journée continue",
     calls: "Appels de 9h à 20h · messagerie 24h/24, 7j/7",
     opens: "09:00",
     closes: "20:00",
@@ -553,15 +553,15 @@ export const defaultSettings = {
     favicon: "",
   },
   legal: {
-    legalName: "Hair Home Concept — [raison sociale à compléter]",
+    legalName: "Hair Home Concept, [raison sociale à compléter]",
     legalForm: "[forme juridique à compléter]",
     siret: "[SIRET à compléter]",
     registry: "[immatriculation RM / Chambre de métiers à compléter]",
-    address: "[adresse du siège à compléter — non affichée comme lieu d'accueil]",
+    address: "[adresse du siège à compléter, non affichée comme lieu d'accueil]",
     publisher: "Angèle [nom à compléter]",
     vat: "",
-    host: "Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis — vercel.com",
-    dataHost: "Neon (Databricks) — base de données PostgreSQL, région Europe (Francfort) recommandée",
+    host: "Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis (vercel.com)",
+    dataHost: "Neon (Databricks), base de données PostgreSQL, région Europe (Francfort) recommandée",
   },
   seo: {
     siteName: "Hair Home Concept",

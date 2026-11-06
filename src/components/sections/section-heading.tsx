@@ -1,15 +1,14 @@
-import { LineReveal, Reveal } from "@/components/motion/reveal";
+import { Reveal, TextReveal } from "@/components/motion/reveal";
 import { cn, paragraphs } from "@/lib/utils";
 
+/** Titre de section : le titre seul porte la hiérarchie (pas de surtitre décoratif). */
 export function SectionHeading({
-  eyebrow,
   title,
   body,
   className,
   align = "left",
   as = "h2",
 }: {
-  eyebrow?: string;
   title: string;
   body?: string;
   className?: string;
@@ -18,15 +17,10 @@ export function SectionHeading({
 }) {
   return (
     <div className={cn(align === "center" && "mx-auto text-center", className)}>
-      {eyebrow && (
-        <Reveal y={10}>
-          <p className={cn("eyebrow", align === "center" && "justify-center")}>{eyebrow}</p>
-        </Reveal>
-      )}
-      <LineReveal text={title} as={as} className="t-h2 mt-5" />
+      <TextReveal text={title} as={as} className="t-h2" />
       {body && (
         <Reveal delay={0.15}>
-          <div className={cn("t-lead muted mt-7 max-w-[40rem] space-y-4", align === "center" && "mx-auto")}>
+          <div className={cn("t-lead muted mt-6 max-w-[40rem] space-y-4", align === "center" && "mx-auto")}>
             {paragraphs(body).map((p, i) => (
               <p key={i}>{p}</p>
             ))}

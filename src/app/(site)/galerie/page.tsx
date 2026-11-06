@@ -16,8 +16,8 @@ export default async function GaleriePage() {
   const notice = sectionOf(page, "notice");
   return (
     <>
-      <PageIntro eyebrow={intro.text("eyebrow")} title={intro.text("title")} subtitle={intro.text("subtitle")} compact />
-      <section className="on-dark bg-noir pb-28 pt-4">
+      <PageIntro title={intro.text("title")} subtitle={intro.text("subtitle")} />
+      <section className="bg-lin pb-20 pt-10 md:pb-28 md:pt-14">
         <div className="container-x">
           <GalleryGrid items={items} categories={GALLERY_CATEGORIES} />
           {items.some((i) => i.isStock) && notice.text("text") && <p className="muted mt-10 max-w-2xl text-sm">{notice.text("text")}</p>}

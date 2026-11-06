@@ -22,11 +22,11 @@ export function MobileActionBar({ phoneE164, whatsapp }: { phoneE164: string; wh
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       aria-hidden={!show}
     >
-      <div className="flex gap-2 border border-ivoire/10 bg-noir/90 p-2 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-xl">
+      <div className="flex gap-2 rounded-full bg-noir/90 p-1.5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] ring-1 ring-ivoire/10 backdrop-blur-xl">
         <a
           href={telHref(phoneE164)}
           tabIndex={show ? 0 : -1}
-          className="flex min-h-12 flex-1 items-center justify-center gap-2 border border-ivoire/25 text-ivoire"
+          className="flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-ivoire/10 text-ivoire"
         >
           <Phone className="h-4 w-4" aria-hidden /> Appeler
         </a>
@@ -34,14 +34,14 @@ export function MobileActionBar({ phoneE164, whatsapp }: { phoneE164: string; wh
           <a
             href={`https://wa.me/${whatsapp.replace(/[^\d]/g, "")}`}
             tabIndex={show ? 0 : -1}
-            className="flex min-h-12 items-center justify-center border border-ivoire/25 px-4 text-ivoire"
+            className="flex min-h-12 items-center justify-center rounded-full bg-ivoire/10 px-4 text-ivoire"
             target="_blank"
             rel="noopener noreferrer"
           >
             WhatsApp
           </a>
         )}
-        <Link href="/contact" tabIndex={show ? 0 : -1} className="flex min-h-12 flex-[1.4] items-center justify-center bg-champagne text-noir">
+        <Link href="/contact" tabIndex={show ? 0 : -1} className="flex min-h-12 flex-[1.4] items-center justify-center rounded-full bg-champagne text-noir">
           Prendre rendez-vous
         </Link>
       </div>

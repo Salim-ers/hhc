@@ -1,53 +1,43 @@
-import { Monogram } from "@/components/brand/monogram";
-import { ImageReveal, LineReveal, Reveal } from "@/components/motion/reveal";
+import { ImageReveal, Reveal, TextReveal } from "@/components/motion/reveal";
 import { Img } from "@/components/ui/img";
 import { cn } from "@/lib/utils";
 
-/** En-tête des pages intérieures : fond noir, titre éditorial, image à l'arc HHC. */
+/** En-tête des pages intérieures : panneau sombre arrondi, titre révélé mot à mot, photo dans l'arche du miroir. */
 export function PageIntro({
-  eyebrow,
   title,
   subtitle,
   image,
   children,
-  compact = false,
 }: {
-  eyebrow: string;
   title: string;
   subtitle?: string;
   image?: { url: string; alt: string } | null;
   children?: React.ReactNode;
-  compact?: boolean;
 }) {
   return (
-    <section className="on-dark grain relative isolate overflow-hidden bg-noir">
-      <Monogram
-        aria-hidden
-        title=""
-        className="pointer-events-none absolute -bottom-[12%] -left-[8%] -z-10 w-[70vw] max-w-[900px] text-champagne/[0.05]"
-      />
+    <section className="panel on-dark grain relative isolate overflow-hidden bg-noir">
+      <div aria-hidden className="pointer-events-none absolute -left-[15%] -top-[30%] -z-10 h-[90%] w-[60%]">
+        <div className="halo h-full w-full rounded-full bg-[radial-gradient(closest-side,rgba(199,167,108,0.18),transparent)] blur-2xl" />
+      </div>
       <div
         className={cn(
-          "container-x grid items-end gap-12 pb-16 pt-[calc(var(--header-h)+4rem)] lg:grid-cols-12 lg:gap-10",
-          compact ? "lg:pb-20 lg:pt-[calc(var(--header-h)+6rem)]" : "lg:min-h-[78svh] lg:pb-24",
+          "container-x grid items-end gap-10 pb-12 pt-[calc(var(--header-h)+3rem)] md:pb-16 lg:grid-cols-12",
+          image && "lg:pt-[calc(var(--header-h)+2rem)]",
         )}
       >
-        <div className={cn(image ? "lg:col-span-7" : "lg:col-span-10")}>
-          <Reveal y={12}>
-            <p className="eyebrow">{eyebrow}</p>
-          </Reveal>
-          <LineReveal text={title} as="h1" immediate delay={0.1} className="t-h1 mt-6 text-ivoire" />
+        <div className={cn(image ? "lg:col-span-7" : "lg:col-span-10", "lg:pb-4")}>
+          <TextReveal text={title} as="h1" immediate delay={0.1} className="t-h1 text-ivoire" />
           {subtitle && (
             <Reveal delay={0.35}>
-              <p className="t-lead muted mt-8 max-w-[38rem]">{subtitle}</p>
+              <p className="t-lead muted mt-6 max-w-[38rem] md:mt-8">{subtitle}</p>
             </Reveal>
           )}
           {children && <Reveal delay={0.5}>{children}</Reveal>}
         </div>
         {image && (
-          <div className="lg:col-span-5">
-            <ImageReveal className="arc-tl aspect-[4/5] w-full max-w-[34rem] lg:ml-auto">
-              <Img src={image.url} alt={image.alt} fill priority sizes="(min-width:1024px) 34vw, 92vw" className="object-cover" />
+          <div className="hidden sm:block lg:col-span-4 lg:col-start-9">
+            <ImageReveal className="arch ml-auto aspect-[3/4] w-full max-w-[22rem] lg:max-w-none">
+              <Img src={image.url} alt={image.alt} fill loading="eager" sizes="(min-width:1024px) 30vw, 60vw" className="object-cover" />
             </ImageReveal>
           </div>
         )}

@@ -9,7 +9,6 @@ import * as fb from "./fallback";
 import type {
   PublicArea,
   PublicCategory,
-  PublicExpertise,
   PublicFaq,
   PublicGalleryItem,
   PublicOffer,
@@ -159,28 +158,6 @@ export async function getPriceCatalog(): Promise<PublicCategory[]> {
         }),
     }));
   }, "catalog")();
-}
-
-export async function getExpertises(): Promise<PublicExpertise[]> {
-  if (!hasDatabase) return fb.fallbackExpertises();
-  return cache(async () => {
-    const rows = await getPublicDb()
-      .select()
-      .from(schema.expertises)
-      .where(eq(schema.expertises.isPublished, true))
-      .orderBy(asc(schema.expertises.sortOrder));
-    return rows.map((e) => ({
-      id: e.id,
-      slug: e.slug,
-      kicker: e.kicker,
-      title: e.title,
-      summary: e.summary,
-      highlights: e.highlights,
-      imageUrl: e.imageUrl,
-      imageAlt: e.imageAlt,
-      priceCategorySlug: e.priceCategorySlug,
-    }));
-  }, "expertises")();
 }
 
 /* ─────────────────────────────── Offres ─────────────────────────────── */

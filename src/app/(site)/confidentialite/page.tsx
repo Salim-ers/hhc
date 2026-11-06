@@ -11,7 +11,7 @@ export default async function ConfidentialitePage() {
     <LegalShell title="Politique de confidentialité">
       <LegalBody text={sectionOf(page, "content").text("body")} />
       <p className="mt-12 max-w-3xl">
-        Responsable du traitement : {s.legal.legalName} — {s.business.email}
+        Responsable du traitement : {s.legal.legalName}, {s.business.email}
       </p>
     </LegalShell>
   );

@@ -2,7 +2,7 @@
 
 Refonte complète de **hairhomeconcept.com** : coiffure haut de gamme à domicile à Troyes et Sainte-Savine (Angèle, maître artisan coloriste et visagiste).
 
-- **Site public** multipage « Luxury Hair Editorial » : loader au monogramme, Hero cinématique, carte des tarifs à onglets, galerie avec visionneuse, carte de la zone d'intervention, formulaire de demande de rendez-vous.
+- **Site public** multipage « Le miroir » (voir `docs/DESIGN-SYSTEM.md`) : loader au monogramme, Hero en arche de miroir, page Prestations & tarifs à onglets, galerie avec visionneuse, carte de la zone d'intervention, formulaire unique de demande de rendez-vous.
 - **Administration sur mesure** (`/admin`) : prix et prestations, offres programmables, textes avec brouillon / aperçu / publication, médiathèque (import, recadrage, remplacement partout), demandes de rendez-vous, paramètres, comptes, historique.
 - **Aucun WordPress.** Toutes les données (tarifs compris) sont en base PostgreSQL **Neon** ; les modifications publiées apparaissent sans redéploiement.
 
@@ -30,7 +30,7 @@ Refonte complète de **hairhomeconcept.com** : coiffure haut de gamme à domicil
 ```
 src/
   app/
-    (site)/            Pages publiques (accueil, prestations, tarifs, coloriste-visagiste,
+    (site)/            Pages publiques (accueil, prestations [& tarifs], coloriste-visagiste,
                        forfaits-offres, galerie, a-propos, zone-intervention, contact,
                        bijoux-cadeaux, mentions-legales, confidentialite)
     admin/             Administration : connexion, (panel)/… pages protégées, _actions/ (actions serveur)

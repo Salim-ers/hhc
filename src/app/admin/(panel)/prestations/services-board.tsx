@@ -111,7 +111,7 @@ export function ServicesBoard({ categories, services, onlyReview, initialCat }: 
                 </Link>
               </div>
             </div>
-            {c.slug === "forfaits" && <p className="px-6 pt-4 text-sm text-taupe">Cet onglet affiche automatiquement les forfaits et formules gérés dans « Offres & forfaits ».</p>}
+            {c.slug === "forfaits" && <p className="px-6 pt-4 text-sm text-taupe">Les forfaits et formules se gèrent dans « Offres & forfaits » et s&apos;affichent sur la page Offres du site (pas dans la carte des tarifs).</p>}
             {rows.length ? (
               <ul className="divide-y divide-encre/8">
                 {rows.map((s, i) => (

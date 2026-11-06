@@ -31,7 +31,7 @@ export default async function EditServicePage({ params, searchParams }: { params
         <ChevronLeft className="h-4 w-4" /> Prestations & prix
       </Link>
       <PageHeader title={isNew ? "Nouvelle prestation" : service!.name} description={cat ? `Onglet « ${cat.label} » de la page Tarifs` : undefined} />
-      <ServiceForm categories={cats.filter((c) => c.slug !== "forfaits")} service={service} variants={variants} defaultCategory={sp.cat} sections={sections} previewHref={`/tarifs#${cat?.slug ?? ""}`} />
+      <ServiceForm categories={cats.filter((c) => c.slug !== "forfaits")} service={service} variants={variants} defaultCategory={sp.cat} sections={sections} previewHref={`/prestations#${cat?.slug ?? ""}`} />
     </>
   );
 }

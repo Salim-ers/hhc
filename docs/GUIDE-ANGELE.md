@@ -25,7 +25,7 @@ Pour changer votre mot de passe : menu **Mon compte**.
 3. Changez le **Prix** (par exemple `32` ou `32,50`).
 4. Touchez **Enregistrer et publier**.
 
-C'est en ligne immédiatement sur la page Tarifs.
+C'est en ligne immédiatement sur la page Prestations & tarifs.
 
 - **Cheveux longs ou épais à un autre prix** : section *Variantes de prix*, ajoutez « Cheveux longs ou épais » et son prix.
 - **Supplément** (ex. +13 €) : champ *Supplément*.

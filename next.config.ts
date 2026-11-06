@@ -11,9 +11,11 @@ const legacyRedirects: [string, string][] = [
   ["/flyer_249.htm", "/forfaits-offres"],
   ["/bijoux_251.htm", "/bijoux-cadeaux"],
   ["/ma_passion_257.htm", "/a-propos"],
-  ["/hommes___etudiants___enfants_258.htm", "/tarifs#homme"],
-  ["/femmes___etudiantes___enfants_259.htm", "/tarifs#femme"],
-  ["/a_la_carte_260.htm", "/tarifs#a-la-carte"],
+  ["/hommes___etudiants___enfants_258.htm", "/prestations#homme"],
+  ["/femmes___etudiantes___enfants_259.htm", "/prestations#femme"],
+  ["/a_la_carte_260.htm", "/prestations#a-la-carte"],
+  // La page Tarifs a été fusionnée dans « Prestations & tarifs » (l'ancre #categorie est conservée par le navigateur).
+  ["/tarifs", "/prestations"],
   ["/contact_261.htm", "/contact"],
   ["/photos_262.htm", "/galerie"],
 ];

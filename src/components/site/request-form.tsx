@@ -2,8 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { startTransition, useActionState, useEffect, useId, useRef, useState } from "react";
-import { Check } from "lucide-react";
-import { Monogram } from "@/components/brand/monogram";
+import { Check, ChevronDown } from "lucide-react";
 import { submitAppointmentRequest, type RequestState } from "@/lib/services/requests";
 import { cn, telHref } from "@/lib/utils";
 
@@ -37,15 +36,18 @@ export function RequestForm({ services, communes, defaultService, phone, phoneE1
   }, [state.status]);
 
   const field = cn(
-    "peer w-full border-0 border-b bg-transparent px-0 pb-3 pt-6 text-[1.05rem] outline-none transition-colors placeholder:text-transparent focus:ring-0",
-    dark ? "border-ivoire/25 text-ivoire focus:border-champagne" : "border-encre/25 text-encre focus:border-or-profond",
+    "peer w-full rounded-[1.1rem] border px-5 pb-2.5 pt-7 text-[1.02rem] outline-none transition-[border-color,box-shadow,background-color] duration-300 placeholder:text-transparent",
+    "aria-[invalid=true]:border-[#b3412f]/60",
+    dark
+      ? "border-ivoire/15 bg-ivoire/[0.05] text-ivoire focus:border-champagne focus:shadow-[0_0_0_4px_rgba(199,167,108,0.18)]"
+      : "border-encre/10 bg-ivoire text-encre focus:border-or-profond/60 focus:bg-white focus:shadow-[0_0_0_4px_rgba(138,106,34,0.12)]",
   );
   const label = cn(
-    "pointer-events-none absolute left-0 top-6 origin-left text-[1.02rem] transition-all duration-300",
-    "peer-focus:-translate-y-5 peer-focus:scale-[0.82] peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:scale-[0.82]",
+    "pointer-events-none absolute left-5 top-[1.15rem] origin-left text-[1.02rem] transition-all duration-300",
+    "peer-focus:-translate-y-2.5 peer-focus:scale-[0.78] peer-[:not(:placeholder-shown)]:-translate-y-2.5 peer-[:not(:placeholder-shown)]:scale-[0.78]",
     dark ? "text-ivoire/60" : "text-taupe",
   );
-  const staticLabel = cn("mb-1 block text-[0.85rem]", dark ? "text-ivoire/60" : "text-taupe");
+  const staticLabel = cn("mb-2 block pl-1 text-[0.85rem]", dark ? "text-ivoire/60" : "text-taupe");
   const errorText = "mt-2 text-sm text-[#b3412f]";
 
   return (
@@ -60,9 +62,8 @@ export function RequestForm({ services, communes, defaultService, phone, phoneE1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className={cn("relative overflow-hidden border p-10 outline-none md:p-14", dark ? "border-ivoire/15" : "border-encre/15 bg-lin")}
+            className={cn("relative overflow-hidden rounded-[2rem] p-10 outline-none md:p-14", dark ? "bg-ivoire/[0.05]" : "bg-ivoire")}
           >
-            <Monogram aria-hidden title="" className="absolute -right-10 -top-6 w-56 text-champagne/10" />
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-champagne text-noir">
               <Check className="h-5 w-5" aria-hidden />
             </span>
@@ -89,7 +90,7 @@ export function RequestForm({ services, communes, defaultService, phone, phoneE1
               startTransition(() => action(fd));
             }}
             noValidate
-            className="grid gap-x-8 gap-y-7 sm:grid-cols-2"
+            className="grid gap-x-4 gap-y-4 sm:grid-cols-2"
             exit={{ opacity: 0, y: -10 }}
             aria-describedby={state.status === "error" ? `${uid}-err` : undefined}
           >
@@ -147,13 +148,14 @@ export function RequestForm({ services, communes, defaultService, phone, phoneE1
               <label htmlFor={`${uid}-svc`} className={staticLabel}>
                 Prestation souhaitée
               </label>
+              <div className="relative">
               <select
                 id={`${uid}-svc`}
                 name="service"
                 defaultValue={defaultService ?? ""}
                 required
                 aria-invalid={!!err.service}
-                className={cn(field, "cursor-pointer appearance-none pt-1", dark && "[&>option]:text-encre")}
+                className={cn(field, "cursor-pointer appearance-none py-3.5 pr-12", dark && "[&>option]:text-encre")}
               >
                 <option value="" disabled>
                   Choisir…
@@ -162,16 +164,18 @@ export function RequestForm({ services, communes, defaultService, phone, phoneE1
                   <option key={s}>{s}</option>
                 ))}
               </select>
+              <ChevronDown aria-hidden className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 opacity-60" />
+              </div>
               {err.service && <p className={errorText}>{err.service}</p>}
             </div>
             <div>
               <label htmlFor={`${uid}-date`} className={staticLabel}>
                 Date souhaitée
               </label>
-              <input id={`${uid}-date`} name="preferredDate" type="date" min={today} className={cn(field, "pt-1", dark && "[color-scheme:dark]")} />
+              <input id={`${uid}-date`} name="preferredDate" type="date" min={today} className={cn(field, "py-3.5", dark && "[color-scheme:dark]")} />
               {err.preferredDate && <p className={errorText}>{err.preferredDate}</p>}
             </div>
-            <fieldset>
+            <fieldset className="sm:col-span-2">
               <legend className={staticLabel}>Créneau préféré</legend>
               <div className="mt-2 flex flex-wrap gap-2">
                 {SLOTS.map((s) => (
@@ -179,8 +183,8 @@ export function RequestForm({ services, communes, defaultService, phone, phoneE1
                     <input type="radio" name="timeSlot" value={s} className="peer sr-only" />
                     <span
                       className={cn(
-                        "inline-flex min-h-10 items-center border px-3.5 text-sm transition-colors peer-checked:border-champagne peer-checked:bg-champagne peer-checked:text-noir peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-champagne",
-                        dark ? "border-ivoire/25 text-ivoire/80" : "border-encre/20 text-encre/80",
+                        "inline-flex min-h-11 items-center rounded-full border px-4 text-sm transition-colors peer-checked:border-espresso peer-checked:bg-espresso peer-checked:text-ivoire peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-champagne",
+                        dark ? "border-ivoire/25 text-ivoire/80" : "border-encre/15 bg-ivoire text-encre/80",
                       )}
                     >
                       {s}
@@ -222,11 +226,11 @@ export function RequestForm({ services, communes, defaultService, phone, phoneE1
               </p>
             )}
 
-            <div className="flex flex-wrap items-center gap-5 sm:col-span-2">
+            <div className="mt-2 flex flex-wrap items-center gap-5 sm:col-span-2">
               <button
                 type="submit"
                 disabled={pending}
-                className="group/btn relative isolate inline-flex min-h-14 items-center justify-center overflow-hidden bg-champagne px-10 text-base text-noir before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-champagne-clair before:transition-transform before:duration-700 hover:before:scale-x-100 disabled:opacity-70"
+                className="group/btn relative isolate inline-flex min-h-14 items-center justify-center overflow-hidden rounded-full bg-champagne px-10 text-base text-noir transition-transform duration-300 before:absolute before:inset-0 before:-z-10 before:translate-y-[101%] before:rounded-[inherit] before:bg-champagne-clair before:transition-transform before:duration-700 hover:before:translate-y-0 active:scale-[0.97] disabled:opacity-70"
               >
                 {pending ? "Envoi en cours…" : "Envoyer ma demande"}
               </button>

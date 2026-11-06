@@ -56,14 +56,14 @@ export function ServiceMap({ query, lat, lng, zoom = 11 }: { query: string; lat:
           <button
             type="button"
             onClick={allow}
-            className="relative mt-6 inline-flex min-h-11 items-center gap-2 border border-champagne/60 px-5 text-ivoire transition-colors hover:bg-champagne hover:text-noir"
+            className="relative mt-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-champagne/60 px-5 text-ivoire transition-colors hover:bg-champagne hover:text-noir"
           >
             <MapPin className="h-4 w-4" aria-hidden /> Afficher la carte
           </button>
         </div>
       )}
-      <p className="pointer-events-none absolute bottom-3 left-3 bg-noir/80 px-3 py-1.5 text-xs text-ivoire backdrop-blur">
-        Zone desservie — service exclusivement à domicile, sans accueil du public
+      <p className="pointer-events-none absolute bottom-3 left-3 rounded-full bg-noir/80 px-3 py-1.5 text-xs text-ivoire backdrop-blur">
+        Zone desservie : service exclusivement à domicile, sans accueil du public
       </p>
     </div>
   );

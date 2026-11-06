@@ -53,8 +53,8 @@ export function GalleryGrid({ items, categories }: { items: PublicGalleryItem[];
             aria-pressed={filter === c.value}
             onClick={() => setFilter(c.value)}
             className={cn(
-              "shrink-0 border px-4 py-2 text-[0.92rem] transition-colors duration-300",
-              filter === c.value ? "border-champagne bg-champagne text-noir" : "border-ivoire/20 text-ivoire/75 hover:border-ivoire/50 hover:text-ivoire",
+              "shrink-0 rounded-full border px-4 py-2 text-[0.92rem] transition-colors duration-300",
+              filter === c.value ? "border-espresso bg-espresso text-ivoire" : "border-encre/15 text-taupe hover:border-encre/40 hover:text-encre",
             )}
           >
             {c.label}
@@ -80,7 +80,7 @@ export function GalleryGrid({ items, categories }: { items: PublicGalleryItem[];
                   lastFocus.current = e.currentTarget;
                   setOpen(i);
                 }}
-                className={cn("group relative block w-full overflow-hidden", ASPECT[g.layout] ?? ASPECT.portrait)}
+                className={cn("group relative block w-full overflow-hidden rounded-[1.5rem] md:rounded-[2rem]", ASPECT[g.layout] ?? ASPECT.portrait)}
                 aria-label={`Agrandir : ${g.alt}`}
               >
                 <Img
@@ -110,7 +110,7 @@ export function GalleryGrid({ items, categories }: { items: PublicGalleryItem[];
             transition={{ duration: 0.4 }}
             onClick={close}
           >
-            <button ref={closeRef} type="button" onClick={close} className="absolute right-4 top-4 z-10 flex h-12 w-12 items-center justify-center text-ivoire" aria-label="Fermer">
+            <button ref={closeRef} type="button" onClick={close} className="absolute right-4 top-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-ivoire/10 text-ivoire" aria-label="Fermer">
               <X className="h-6 w-6" />
             </button>
             <button
@@ -119,7 +119,7 @@ export function GalleryGrid({ items, categories }: { items: PublicGalleryItem[];
                 e.stopPropagation();
                 step(-1);
               }}
-              className="absolute left-2 top-1/2 z-10 hidden h-14 w-14 -translate-y-1/2 items-center justify-center text-ivoire/80 hover:text-ivoire md:flex"
+              className="absolute left-4 top-1/2 z-10 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-ivoire/10 text-ivoire/80 hover:bg-ivoire/20 hover:text-ivoire md:flex"
               aria-label="Photo précédente"
             >
               <ChevronLeft className="h-8 w-8" />
@@ -130,7 +130,7 @@ export function GalleryGrid({ items, categories }: { items: PublicGalleryItem[];
                 e.stopPropagation();
                 step(1);
               }}
-              className="absolute right-2 top-1/2 z-10 hidden h-14 w-14 -translate-y-1/2 items-center justify-center text-ivoire/80 hover:text-ivoire md:flex"
+              className="absolute right-4 top-1/2 z-10 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-ivoire/10 text-ivoire/80 hover:bg-ivoire/20 hover:text-ivoire md:flex"
               aria-label="Photo suivante"
             >
               <ChevronRight className="h-8 w-8" />

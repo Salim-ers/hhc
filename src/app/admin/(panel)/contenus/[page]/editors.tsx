@@ -151,7 +151,7 @@ function FieldEditor({ field, value, onChange }: { field: FieldDef; value: unkno
           <Field label={`${field.label} — texte`} htmlFor={`${id}-l`}>
             <Input id={`${id}-l`} value={l.label} onChange={(e) => onChange({ ...l, label: e.target.value })} />
           </Field>
-          <Field label={`${field.label} — lien`} htmlFor={`${id}-h`} hint="Ex. /contact, /tarifs#femme ou https://…">
+          <Field label={`${field.label} — lien`} htmlFor={`${id}-h`} hint="Ex. /contact, /prestations#femme ou https://…">
             <Select
               id={`${id}-h`}
               value={INTERNAL_LINKS.some((x) => x.href === l.href) ? l.href : "__custom"}
@@ -223,12 +223,12 @@ const swap = <T,>(arr: T[], a: number, b: number) => {
 
 const INTERNAL_LINKS = [
   { href: "/contact", label: "Contact & rendez-vous" },
-  { href: "/prestations", label: "Prestations" },
-  { href: "/tarifs", label: "Tarifs" },
-  { href: "/tarifs#femme", label: "Tarifs — Femme" },
-  { href: "/tarifs#homme", label: "Tarifs — Homme" },
-  { href: "/tarifs#coloration", label: "Tarifs — Coloration" },
-  { href: "/tarifs#balayage-meches", label: "Tarifs — Balayage & mèches" },
+  { href: "/prestations", label: "Prestations & tarifs" },
+  { href: "/prestations#femme", label: "Prestations & tarifs : Femme" },
+  { href: "/prestations#homme", label: "Prestations & tarifs : Homme" },
+  { href: "/prestations#coloration", label: "Prestations & tarifs : Coloration" },
+  { href: "/prestations#balayage-meches", label: "Prestations & tarifs : Balayage & mèches" },
+  { href: "/prestations#soins-techniques", label: "Prestations & tarifs : Soins & techniques" },
   { href: "/coloriste-visagiste", label: "Coloriste & visagiste" },
   { href: "/forfaits-offres", label: "Forfaits & offres" },
   { href: "/galerie", label: "Galerie" },

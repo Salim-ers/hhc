@@ -22,14 +22,14 @@ export function OfferCard({ offer, tone = "light", className }: { offer: PublicO
   return (
     <article
       className={cn(
-        "group relative flex h-full flex-col border p-8 transition-[transform,border-color,box-shadow] duration-700 ease-[var(--ease-luxe)] hover:-translate-y-1 md:p-10",
+        "group relative flex h-full flex-col rounded-[1.75rem] border p-8 transition-[transform,border-color,box-shadow] duration-700 ease-[var(--ease-luxe)] hover:-translate-y-1.5 md:p-10",
         dark
           ? "on-dark border-ivoire/12 bg-cacao hover:border-champagne/50 hover:shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]"
           : "border-encre/12 bg-lin hover:border-or-profond/40 hover:shadow-[0_40px_80px_-50px_rgba(56,43,39,0.45)]",
         className,
       )}
     >
-      <p className={cn("text-sm", dark ? "text-champagne" : "text-or-profond")}>{KIND_LABEL[offer.kind]}</p>
+      <p className={cn("w-fit rounded-full px-3 py-1 text-sm", dark ? "bg-champagne/15 text-champagne" : "bg-sable text-or-profond")}>{KIND_LABEL[offer.kind]}</p>
       <h3 className="t-h3 mt-3">{offer.title}</h3>
       {offer.subtitle && <p className="muted mt-2 font-display text-lg italic">{offer.subtitle}</p>}
 
@@ -58,7 +58,7 @@ export function OfferCard({ offer, tone = "light", className }: { offer: PublicO
       {offer.conditions && <p className="muted mt-6 text-sm leading-relaxed">{offer.conditions}</p>}
       {offer.code && (
         <p className="mt-4 text-sm">
-          Code : <span className="tabular border border-current/30 px-2 py-0.5">{offer.code}</span>
+          Code : <span className="tabular rounded-full border border-current/30 px-3 py-0.5">{offer.code}</span>
         </p>
       )}
 
@@ -66,12 +66,12 @@ export function OfferCard({ offer, tone = "light", className }: { offer: PublicO
         <Link
           href={offerHref(offer)}
           className={cn(
-            "inline-flex min-h-11 items-center border-b pb-1 text-[0.95rem] transition-colors",
-            dark ? "border-champagne/60 text-ivoire hover:text-champagne" : "border-or-profond/50 hover:text-or-profond",
+            "inline-flex min-h-11 items-center rounded-full border px-5 text-[0.95rem] transition-colors duration-500",
+            dark ? "border-champagne/50 text-ivoire hover:bg-champagne hover:text-noir" : "border-encre/20 hover:border-espresso hover:bg-espresso hover:text-ivoire",
           )}
         >
           {offer.ctaLabel || "Prendre rendez-vous"}
-          <span className="sr-only"> — {offer.title}</span>
+          <span className="sr-only"> : {offer.title}</span>
         </Link>
       </div>
     </article>

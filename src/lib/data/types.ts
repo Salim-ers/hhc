@@ -33,18 +33,6 @@ export type PublicCategory = {
   services: PublicService[];
 };
 
-export type PublicExpertise = {
-  id: string;
-  slug: string;
-  kicker: string | null;
-  title: string;
-  summary: string;
-  highlights: string[];
-  imageUrl: string | null;
-  imageAlt: string | null;
-  priceCategorySlug: string | null;
-};
-
 export type PublicOffer = {
   id: string;
   slug: string;

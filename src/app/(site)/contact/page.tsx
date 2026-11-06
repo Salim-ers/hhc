@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Mail, MessageCircle, Phone } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { BreadcrumbJsonLd } from "@/components/site/json-ld";
@@ -21,16 +22,18 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
 
   return (
     <>
-      <PageIntro eyebrow={intro.text("eyebrow")} title={intro.text("title")} subtitle={intro.text("subtitle")} image={intro.image("image")} />
-      <section className="bg-lin py-20 md:py-28">
+      <PageIntro title={intro.text("title")} subtitle={intro.text("subtitle")} image={intro.image("image")} />
+      <section className="bg-lin py-16 md:py-24">
         <div className="container-x grid gap-16 lg:grid-cols-12">
-          <aside className="space-y-10 lg:col-span-4">
+          <aside className="space-y-4 lg:col-span-4">
             <Reveal>
               <h2 className="t-h3">Directement</h2>
               <ul className="mt-6 space-y-3">
                 <li>
-                  <a href={telHref(b.phoneE164)} className="group flex items-center gap-4 border border-encre/15 p-5 transition-colors hover:border-or-profond/50">
-                    <Phone className="h-5 w-5 text-or-profond" aria-hidden />
+                  <a href={telHref(b.phoneE164)} className="group flex items-center gap-4 rounded-[1.5rem] bg-ivoire p-5 transition-colors duration-300 hover:bg-sable">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lin text-or-profond">
+                      <Phone className="h-5 w-5" aria-hidden />
+                    </span>
                     <span>
                       <span className="block font-display text-2xl">{b.phone}</span>
                       <span className="text-sm text-taupe">{settings.hours.calls}</span>
@@ -38,8 +41,10 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${b.email}`} className="flex items-center gap-4 border border-encre/15 p-5 transition-colors hover:border-or-profond/50">
-                    <Mail className="h-5 w-5 text-or-profond" aria-hidden />
+                  <a href={`mailto:${b.email}`} className="flex items-center gap-4 rounded-[1.5rem] bg-ivoire p-5 transition-colors duration-300 hover:bg-sable">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lin text-or-profond">
+                      <Mail className="h-5 w-5" aria-hidden />
+                    </span>
                     <span className="break-all">{b.email}</span>
                   </a>
                 </li>
@@ -49,9 +54,11 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
                       href={`https://wa.me/${b.whatsappNumber.replace(/[^\d]/g, "")}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 border border-encre/15 p-5 transition-colors hover:border-or-profond/50"
+                      className="flex items-center gap-4 rounded-[1.5rem] bg-ivoire p-5 transition-colors duration-300 hover:bg-sable"
                     >
-                      <MessageCircle className="h-5 w-5 text-or-profond" aria-hidden />
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lin text-or-profond">
+                        <MessageCircle className="h-5 w-5" aria-hidden />
+                      </span>
                       WhatsApp
                     </a>
                   </li>
@@ -59,16 +66,18 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
               </ul>
             </Reveal>
             {voice.visible && (
-              <Reveal delay={0.1} className="border-t border-encre/15 pt-8">
+              <Reveal delay={0.1} className="rounded-[1.5rem] bg-ivoire p-6 md:p-7">
                 <h2 className="t-h3">{voice.text("title")}</h2>
                 <p className="muted mt-3">{voice.text("body")}</p>
               </Reveal>
             )}
-            <Reveal delay={0.15} className="border-t border-encre/15 pt-8">
-              <h2 className="t-h3">Horaires & déplacement</h2>
+            <Reveal delay={0.15} className="rounded-[1.5rem] bg-ivoire p-6 md:p-7">
+              <h2 className="t-h3">Horaires</h2>
               <p className="muted mt-3">{settings.hours.summary}.</p>
-              <p className="muted mt-2">{settings.travel.included}</p>
               <p className="muted mt-2 text-sm">{settings.hours.extra}</p>
+              <Link href="/zone-intervention" className="link-underline mt-4 inline-block text-sm text-or-profond">
+                Communes desservies et déplacement
+              </Link>
             </Reveal>
           </aside>
           <div className="lg:col-span-7 lg:col-start-6">

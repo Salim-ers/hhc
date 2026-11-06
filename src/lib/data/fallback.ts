@@ -10,7 +10,6 @@ import {
   defaultSettings,
   seedAreas,
   seedCategories,
-  seedExpertises,
   seedFaqs,
   seedGallery,
   seedOffers,
@@ -18,7 +17,6 @@ import {
 import type {
   PublicArea,
   PublicCategory,
-  PublicExpertise,
   PublicFaq,
   PublicGalleryItem,
   PublicOffer,
@@ -78,20 +76,6 @@ export function fallbackOffers(): PublicOffer[] {
       highlight: Boolean(o.highlight),
       endsAt: null,
     }));
-}
-
-export function fallbackExpertises(): PublicExpertise[] {
-  return seedExpertises.map((e, i) => ({
-    id: `exp-${i}`,
-    slug: e.slug,
-    kicker: e.kicker,
-    title: e.title,
-    summary: e.summary,
-    highlights: e.highlights,
-    imageUrl: e.image.url,
-    imageAlt: e.image.alt,
-    priceCategorySlug: e.priceCategorySlug,
-  }));
 }
 
 export function fallbackPage(key: string): PublicPage | null {
