@@ -77,31 +77,22 @@ export const PAGES: PageDef[] = [
         key: "hero",
         label: "Hero (haut de la page d'accueil)",
         locked: true,
+        description:
+          "Une grande photo panoramique (format paysage conseillé), le titre, puis le téléphone, les horaires et le déplacement repris des Paramètres.",
         fields: [
           { name: "title", label: "Titre (une ligne par retour à la ligne)", type: "textarea", rows: 3 },
           subtitle,
-          { name: "image", label: "Photo principale (affichée dans le miroir)", type: "image" },
-          { name: "imageDetail", label: "Photo secondaire (petit format, en superposition)", type: "image" },
-          {
-            name: "highlights",
-            label: "Informations clés (pastilles sous les boutons)",
-            type: "list",
-            itemLabel: "Information",
-            max: 3,
-            fields: [{ name: "text", label: "Texte court", type: "text" }],
-          },
+          { name: "image", label: "Photo panoramique (format paysage)", type: "image" },
           { name: "ctaPrimary", label: "Bouton principal", type: "link" },
-          { name: "ctaSecondary", label: "Bouton secondaire", type: "link" },
+          { name: "ctaSecondary", label: "Lien secondaire (sous le titre, à droite)", type: "link" },
         ],
         defaults: {
-          title: "L'art de la coiffure,\nchez vous.",
+          title: "La coiffure\nautrement.",
           subtitle:
-            "Coupe, couleur et coiffage réalisés à votre domicile par Angèle, maître artisan coloriste et visagiste, à Troyes et dans son agglomération.",
+            "Angèle, maître artisan coiffeuse, coloriste et visagiste, vient chez vous avec tout le matériel d'un salon : coupe, couleur et coiffage pour toute la famille.",
           image: stock.heroHairMotion,
-          imageDetail: stock.stylingWaves,
-          highlights: [{ text: "Déplacement offert à Troyes" }, { text: "Du lundi au samedi, 9h–20h" }, { text: "Femmes, hommes, enfants" }],
           ctaPrimary: { label: "Prendre rendez-vous", href: "/contact" },
-          ctaSecondary: { label: "Prestations & tarifs", href: "/prestations" },
+          ctaSecondary: { label: "Voir les prestations et les tarifs", href: "/prestations" },
         },
       },
       {

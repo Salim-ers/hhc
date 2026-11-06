@@ -33,10 +33,8 @@ export default async function HomePage() {
   const shown = new Set<string>();
   for (const key of ["hero", "expertise", "experience"]) {
     const s = sectionOf(page, key);
-    for (const name of ["image", "imageDetail"]) {
-      const url = s.image(name)?.url;
-      if (url) shown.add(url);
-    }
+    const url = s.image("image")?.url;
+    if (url) shown.add(url);
   }
   for (const it of sectionOf(page, "signatures").list<Item>("items")) if (it.image?.url) shown.add(it.image.url);
 
@@ -51,13 +49,12 @@ export default async function HomePage() {
             title={s.text("title")}
             subtitle={s.text("subtitle")}
             image={s.image("image")}
-            imageDetail={s.image("imageDetail")}
-            highlights={s
-              .list<{ text: string }>("highlights")
-              .map((h) => h.text)
-              .filter(Boolean)}
             ctaPrimary={s.link("ctaPrimary")}
             ctaSecondary={s.link("ctaSecondary")}
+            phone={settings.business.phone}
+            phoneE164={settings.business.phoneE164}
+            hours={settings.hours.summary}
+            travel={settings.travel.included}
           />
         );
       case "expertise":

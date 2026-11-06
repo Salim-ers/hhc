@@ -72,7 +72,7 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
       >
         {banner && !solid && (
           <div className="flex justify-center px-3 pt-3">
-            <div className="flex min-h-9 items-center gap-3 rounded-full bg-champagne px-5 py-1.5 text-center text-sm text-noir">
+            <div className="flex min-h-9 items-center gap-3 rounded-full bg-espresso px-5 py-1.5 text-center text-sm text-ivoire">
               <span>{banner.text}</span>
               {banner.href && (
                 <Link href={banner.href} className="font-medium underline underline-offset-4">
@@ -87,7 +87,7 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
             className={cn(
               "-mx-3 flex h-16 items-center justify-between gap-6 rounded-full px-3 transition-[background-color,box-shadow,backdrop-filter] duration-700 md:-mx-5 md:px-5",
               solid || open
-                ? "bg-noir/80 shadow-[0_20px_50px_-25px_rgba(0,0,0,0.7)] ring-1 ring-ivoire/10 backdrop-blur-xl"
+                ? "bg-lin/85 shadow-[0_20px_50px_-30px_rgba(56,43,39,0.45)] ring-1 ring-encre/10 backdrop-blur-xl"
                 : "bg-transparent",
             )}
           >
@@ -96,7 +96,7 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={customLogo} alt="Hair Home Concept" className="h-9 w-auto md:h-10" />
               ) : (
-                <LogoInline />
+                <LogoInline tone="dark" />
               )}
             </Link>
 
@@ -109,7 +109,7 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
                       aria-current={isActive(item.href) ? "page" : undefined}
                       className={cn(
                         "relative block rounded-full px-3.5 py-2 text-[0.92rem] transition-colors duration-300 xl:px-4",
-                        isActive(item.href) ? "bg-ivoire/10 text-ivoire" : "text-ivoire/75 hover:bg-ivoire/[0.06] hover:text-ivoire",
+                        isActive(item.href) ? "bg-encre/[0.07] text-encre" : "text-encre/70 hover:bg-encre/[0.05] hover:text-encre",
                       )}
                     >
                       {item.label}
@@ -132,7 +132,7 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
                   >
                     <Link
                       href="/contact"
-                      className="inline-flex min-h-11 items-center rounded-full bg-champagne px-5 text-[0.92rem] text-noir transition-colors duration-300 hover:bg-champagne-clair"
+                      className="inline-flex min-h-11 items-center rounded-full bg-noir px-5 text-[0.92rem] text-ivoire transition-colors duration-300 hover:bg-espresso"
                     >
                       Prendre rendez-vous
                     </Link>
@@ -144,7 +144,7 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
                 onClick={() => setOpen((v) => !v)}
                 aria-expanded={open}
                 aria-controls="menu-mobile"
-                className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full text-ivoire ring-1 ring-ivoire/20 lg:hidden"
+                className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full text-encre ring-1 ring-encre/15 lg:hidden"
               >
                 <span className="sr-only">{open ? "Fermer le menu" : "Ouvrir le menu"}</span>
                 <span className="relative block h-2.5 w-5">
@@ -169,7 +169,7 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
             role="dialog"
             aria-modal="true"
             aria-label="Menu"
-            className="fixed inset-2 z-40 overflow-y-auto rounded-[2rem] bg-noir text-ivoire lg:hidden"
+            className="fixed inset-2 z-40 overflow-y-auto rounded-[2rem] bg-ivoire text-encre lg:hidden"
             initial={{ clipPath: "circle(0% at 92% 2.5rem)" }}
             animate={{ clipPath: "circle(150% at 92% 2.5rem)" }}
             exit={{ clipPath: "circle(0% at 92% 2.5rem)" }}
@@ -191,7 +191,7 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
                         aria-current={isActive(item.href) ? "page" : undefined}
                         className={cn(
                           "block py-1.5 font-display text-[clamp(1.9rem,8.5vw,2.8rem)] leading-tight",
-                          isActive(item.href) ? "text-champagne" : "text-ivoire",
+                          isActive(item.href) ? "text-or-profond" : "text-encre",
                         )}
                       >
                         {item.label}
@@ -206,11 +206,11 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.7, ease: EASE }}
               >
-                <Link href="/contact" className="flex min-h-14 items-center justify-center rounded-full bg-champagne text-noir">
+                <Link href="/contact" className="flex min-h-14 items-center justify-center rounded-full bg-noir text-ivoire">
                   Prendre rendez-vous
                 </Link>
-                <div className="flex flex-col gap-1 text-center text-ivoire/70">
-                  <a href={telHref(phoneE164)} className="text-xl text-ivoire">
+                <div className="flex flex-col gap-1 text-center text-taupe">
+                  <a href={telHref(phoneE164)} className="text-xl text-encre">
                     {phone}
                   </a>
                   <a href={`mailto:${email}`}>{email}</a>

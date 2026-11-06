@@ -37,13 +37,13 @@ Tout ce qui est listé ici est **déjà en place dans le site**, mais repose sur
 - [ ] **Mentions légales** : raison sociale, forme juridique, SIRET, immatriculation, adresse du siège, directrice de la publication (*Paramètres → Informations légales*). Les champs contiennent des repères « [à compléter] ».
 - [ ] **Politique de confidentialité** : durée de conservation proposée de 3 ans après le dernier contact, à confirmer.
 
-## Refonte « Le miroir » (06/11/2026)
+## Refonte du site (06/11/2026)
 
 - [ ] **Base déjà initialisée ?** `npm run db:seed` n'écrase jamais l'existant. Si la base a été remplie avant cette refonte, les nouveaux textes par défaut (Hero, avantages, sans tirets) ne s'appliquent pas d'eux-mêmes : les relire dans *Textes & pages → Accueil*. Les anciens surtitres restent stockés mais ne sont plus affichés ni éditables.
 - [ ] **Sections retirées** de l'accueil (coloriste, aperçu des offres), de la page À propos (atouts) et de Prestations (bloc « à domicile ») : leurs informations existent déjà ailleurs (page Coloriste, page Offres, section « La coiffure à domicile », FAQ, Zone d'intervention).
 - [ ] **Page Tarifs fusionnée** dans « Prestations & tarifs » : `/tarifs` redirige vers `/prestations` (redirection permanente, ancres conservées). Les liens enregistrés en base vers `/tarifs#…` continuent donc de fonctionner.
 - [ ] **Table `expertises`** : plus affichée sur le site (la page fusionnée utilise les catégories de tarifs et leurs photos). Conservée en base, sans migration.
-- [ ] **Hero** : nouvelle photo secondaire et trois pastilles (« Déplacement offert à Troyes », « Du lundi au samedi, 9h–20h », « Femmes, hommes, enfants ») modifiables dans *Accueil → Hero*.
+- [ ] **Hero** : titre « La coiffure autrement. » (signature du logo) et grande photo **au format paysage** ; le téléphone, les horaires et le déplacement viennent des *Paramètres*. Une vraie photo d'Angèle au travail serait idéale ici.
 
 ## Technique
 

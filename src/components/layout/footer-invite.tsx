@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Magnetic, Parallax, Reveal, TextReveal } from "@/components/motion/reveal";
+import { Parallax, Reveal, TextReveal } from "@/components/motion/reveal";
 import { LinkButton } from "@/components/ui/button";
 import { Img } from "@/components/ui/img";
 import { telHref } from "@/lib/utils";
@@ -23,11 +23,9 @@ export function FooterInvite({ invite, phone, phoneE164 }: { invite: Invite; pho
           <Reveal delay={0.15}>
             <p className="t-lead muted mt-6 max-w-xl">{invite.body}</p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Magnetic>
-                <LinkButton href="/contact" size="lg" arrow>
-                  Demander un rendez-vous
-                </LinkButton>
-              </Magnetic>
+              <LinkButton href="/contact" size="lg" arrow>
+                Demander un rendez-vous
+              </LinkButton>
               <LinkButton href={telHref(phoneE164)} variant="light" size="lg">
                 Appeler le {phone}
               </LinkButton>

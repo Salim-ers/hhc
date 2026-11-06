@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { cva, type VariantProps } from "class-variance-authority";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
  * Boutons publics en forme de pilule. Micro-interaction : au survol, une couleur monte depuis
- * le bas comme un liquide (transform uniquement, donc fluide) et la flèche s'envole.
+ * le bas comme un liquide (transform uniquement, donc fluide) et la flèche avance.
  */
 const button = cva(
   "group/btn relative isolate inline-flex min-h-12 items-center justify-center gap-3 overflow-hidden rounded-full px-7 py-3 text-[0.95rem] font-normal tracking-[0.01em] transition-[color,border-color,transform] duration-500 ease-[var(--ease-luxe)] active:scale-[0.97] focus-visible:outline-offset-4 disabled:pointer-events-none disabled:opacity-60",
@@ -29,12 +29,7 @@ const fill =
 type Variant = VariantProps<typeof button>;
 
 function Arrow() {
-  return (
-    <span aria-hidden className="relative -mr-2 flex h-7 w-7 items-center justify-center overflow-hidden rounded-full bg-current/10">
-      <ArrowUpRight className="h-4 w-4 transition-transform duration-500 ease-[var(--ease-luxe)] group-hover/btn:-translate-y-6 group-hover/btn:translate-x-6" />
-      <ArrowUpRight className="absolute h-4 w-4 -translate-x-6 translate-y-6 transition-transform duration-500 ease-[var(--ease-luxe)] group-hover/btn:translate-x-0 group-hover/btn:translate-y-0" />
-    </span>
-  );
+  return <ArrowRight aria-hidden className="-mr-1 h-4 w-4 transition-transform duration-500 ease-[var(--ease-luxe)] group-hover/btn:translate-x-1" />;
 }
 
 export function LinkButton({

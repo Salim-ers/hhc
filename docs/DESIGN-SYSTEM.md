@@ -1,10 +1,10 @@
-# Design system « Le miroir »
+# Design system « Couverture »
 
 ## Idée directrice
 
-Le miroir de coiffeuse s'invite chez vous. La forme signature est **l'arche du miroir** (sommet en plein cintre, base aux angles adoucis, classe `.arch`) : la photo du Hero y apparaît, comme les portraits des pages intérieures. Autour, tout est doux et arrondi : sections colorées en panneaux (`.panel`), cartes, boutons en pilule, champs de formulaire, pastilles. Le mouvement évoque une chevelure : fluide, souple, jamais saccadé.
+Un site clair et éditorial, comme un magazine de coiffure : de grandes photographies, une typographie sûre d'elle, et les informations utiles (téléphone, horaires, déplacement) plutôt que des décorations. La signature de la marque, « La coiffure autrement », sert de titre d'accueil. La forme récurrente est **l'arche du miroir** (classe `.arch`) pour les portraits ; autour, tout est doux et arrondi : panneaux (`.panel`), cartes, boutons en pilule, champs de formulaire.
 
-Ce qui a été volontairement retiré, car typique des gabarits générés : surtitres en italique précédés d'un tiret, numérotation « 01 — », indicateur « Découvrir », filets dorés verticaux, monogrammes géants en filigrane, tirets cadratins dans les textes, titres mi-romains mi-italiques.
+Ce qui a été volontairement retiré, car typique des gabarits générés : fond noir + or + halo lumineux en ouverture, photo inclinée en superposition, pastilles d'arguments, flèche dans un rond, mèches dorées décoratives, boutons « magnétiques », surtitres à tiret, numérotation « 01 — », indicateur « Découvrir », monogrammes en filigrane, tirets cadratins, titres mi-romains mi-italiques.
 
 ## Couleurs (`src/app/globals.css`, `@theme`)
 
@@ -44,10 +44,8 @@ Ce qui a été volontairement retiré, car typique des gabarits générés : sur
 | Effet | Où |
 |---|---|
 | Titres révélés mot à mot (`TextReveal`), légère rotation comme une mèche qui retombe | Tous les titres |
-| Arche qui se dévoile de bas en haut, photo qui « respire », reflet sur la vitre | Hero |
-| Mèches dorées tracées puis parcourues d'un reflet | Hero |
-| Profondeur à la souris entre les deux photos ; parallaxe au défilement | Hero (souris uniquement) |
-| Boutons magnétiques, remplissage qui monte comme un liquide, flèche qui s'envole | Boutons principaux |
+| Photo panoramique qui s'ouvre depuis une capsule, léger zoom arrière, parallaxe au défilement | Hero |
+| Remplissage qui monte comme un liquide, flèche qui avance | Boutons |
 | Section figée, cartes qui défilent horizontalement au rythme du scroll | Prestations signatures (≥ 1024 px) ; carrousel à balayer sur mobile |
 | Fil doré qui se remplit au défilement | La coiffure à domicile |
 | Rubans de photos en sens contraires, en pause au survol | Aperçu de la galerie |
@@ -64,7 +62,9 @@ Règles :
 
 - Conteneur `max-width: 100rem`, gouttière fluide `clamp(1.25rem, 4vw, 4rem)`.
 - Au-delà de 2200 px puis 3000 px (grands moniteurs, téléviseurs), la taille de base passe à 112,5 % puis 140 % : toute la mise en page s'agrandit proportionnellement.
-- Mobile : Hero avec l'arche en premier, boutons visibles sans défiler ; menu plein écran arrondi ; barre d'action « Appeler / Prendre rendez-vous » en pilule.
+- Hero : photo panoramique arrondie sous l'en-tête, puis le titre (gauche) et le texte, le bouton et le téléphone (droite), puis une ligne horaires / déplacement / lien vers les tarifs. Le tout tient dans un écran de 1440 × 900.
+- En-tête clair (texte encre) ; au défilement, capsule claire flottante. En-têtes des pages intérieures : panneau ivoire arrondi.
+- Mobile : photo, titre, texte, bouton et téléphone visibles sans défiler ; menu plein écran clair ; barre d'action « Appeler / Prendre rendez-vous » en pilule.
 
 ## Architecture de l'information (une page = un rôle)
 

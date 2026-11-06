@@ -25,10 +25,10 @@ export default async function ZonePage() {
     <>
       <PageIntro title={intro.text("title")} subtitle={intro.text("subtitle")}>
         <div className="mt-9 flex flex-wrap gap-3">
-          <LinkButton href="/contact" arrow>
+          <LinkButton href="/contact" variant="solid" arrow>
             Demander un rendez-vous
           </LinkButton>
-          <LinkButton href={telHref(settings.business.phoneE164)} variant="light">
+          <LinkButton href={telHref(settings.business.phoneE164)} variant="dark">
             Appeler le {settings.business.phone}
           </LinkButton>
         </div>
@@ -73,7 +73,7 @@ export default async function ZonePage() {
       </section>
 
       {dep.visible && (
-        <section className="panel bg-ivoire py-16 md:py-24">
+        <section className="panel bg-sable py-16 md:py-24">
           <div className="container-x grid gap-12 md:grid-cols-12">
             <SectionHeading title={dep.text("title")} body={dep.text("body")} className="md:col-span-6" />
             <dl className="grid gap-3 md:col-span-6">

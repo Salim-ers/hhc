@@ -40,7 +40,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
         email={settings.business.email}
         hours={settings.hours.summary}
         banner={banner}
-        customLogo={settings.branding.logoDark && settings.branding.logoDark !== "/brand/logo-dark.svg" ? settings.branding.logoDark : null}
+        customLogo={settings.branding.logoLight && settings.branding.logoLight !== "/brand/logo-light.svg" ? settings.branding.logoLight : null}
       />
       <main id="contenu">{children}</main>
       <Footer settings={settings} nav={nav} secondary={secondary} legal={LEGAL_NAV} invite={invite} />
