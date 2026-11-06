@@ -31,7 +31,16 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
   // Sur l'accueil, le Hero porte déjà le bouton de rendez-vous : celui de l'en-tête attend qu'il soit dépassé.
   const [pastHero, setPastHero] = useState(false);
   const [open, setOpen] = useState(false);
+  // Signalé par le Hero de l'accueil quand son film couvre le haut de l'écran.
+  const [heroOpen, setHeroOpen] = useState(false);
   const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const sync = () => setHeroOpen(document.documentElement.dataset.hero === "open");
+    sync();
+    window.addEventListener("hhc:hero", sync);
+    return () => window.removeEventListener("hhc:hero", sync);
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (y) => {
     const prev = scrollY.getPrevious() ?? 0;
@@ -56,6 +65,8 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
 
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   const showCta = !isHome || pastHero;
+  // En haut de l'accueil, l'en-tête est posé sur le film : texte clair.
+  const onDark = isHome && heroOpen && !solid && !open;
 
   return (
     <>
@@ -96,7 +107,7 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={customLogo} alt="Hair Home Concept" className="h-9 w-auto md:h-10" />
               ) : (
-                <LogoInline tone="dark" />
+                <LogoInline tone={onDark ? "light" : "dark"} />
               )}
             </Link>
 
@@ -109,7 +120,13 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
                       aria-current={isActive(item.href) ? "page" : undefined}
                       className={cn(
                         "relative block rounded-full px-3.5 py-2 text-[0.92rem] transition-colors duration-300 xl:px-4",
-                        isActive(item.href) ? "bg-encre/[0.07] text-encre" : "text-encre/70 hover:bg-encre/[0.05] hover:text-encre",
+                        onDark
+                          ? isActive(item.href)
+                            ? "bg-ivoire/15 text-ivoire"
+                            : "text-ivoire/85 hover:bg-ivoire/10 hover:text-ivoire"
+                          : isActive(item.href)
+                            ? "bg-encre/[0.07] text-encre"
+                            : "text-encre/70 hover:bg-encre/[0.05] hover:text-encre",
                       )}
                     >
                       {item.label}
@@ -144,7 +161,10 @@ export function Header({ nav, secondary, phone, phoneE164, email, hours, banner,
                 onClick={() => setOpen((v) => !v)}
                 aria-expanded={open}
                 aria-controls="menu-mobile"
-                className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full text-encre ring-1 ring-encre/15 lg:hidden"
+                className={cn(
+                  "relative z-10 flex h-11 w-11 items-center justify-center rounded-full ring-1 transition-colors duration-500 lg:hidden",
+                  onDark ? "text-ivoire ring-ivoire/35" : "text-encre ring-encre/15",
+                )}
               >
                 <span className="sr-only">{open ? "Fermer le menu" : "Ouvrir le menu"}</span>
                 <span className="relative block h-2.5 w-5">

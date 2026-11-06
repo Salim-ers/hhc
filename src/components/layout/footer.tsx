@@ -107,7 +107,7 @@ export function Footer({
                 </Link>
               </li>
             ))}
-            <li>Photographies d&apos;illustration : Unsplash</li>
+            <li>Images d&apos;illustration : Unsplash, Pexels</li>
           </ul>
         </div>
       </div>

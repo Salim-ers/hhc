@@ -1,3 +1,4 @@
+import { HERO_FILM } from "./hero-film";
 import { stock } from "./stock-images";
 
 /**
@@ -78,11 +79,17 @@ export const PAGES: PageDef[] = [
         label: "Hero (haut de la page d'accueil)",
         locked: true,
         description:
-          "Le titre et le texte à gauche, une grande photo à droite (au-dessus sur mobile). Le déplacement, les horaires et le téléphone sont repris des Paramètres.",
+          "Plein écran : un film de coiffure muet en boucle (ou une photo), le titre, le bouton de rendez-vous et le téléphone. Le déplacement et les horaires sont repris des Paramètres.",
         fields: [
           { name: "title", label: "Titre (une ligne par retour à la ligne)", type: "textarea", rows: 3 },
           subtitle,
-          { name: "image", label: "Photo (idéalement Angèle au travail, sujet au centre)", type: "image" },
+          {
+            name: "video",
+            label: "Film d'ouverture (lien .mp4)",
+            type: "text",
+            help: "Vidéo muette de 10 à 15 secondes, au format paysage. Laisser vide pour afficher la photo à la place.",
+          },
+          { name: "image", label: "Photo (affichée sans film, ou comme affiche d'un film importé)", type: "image" },
           { name: "ctaPrimary", label: "Bouton principal", type: "link" },
           { name: "ctaSecondary", label: "Lien secondaire (sous les horaires)", type: "link" },
         ],
@@ -90,6 +97,7 @@ export const PAGES: PageDef[] = [
           title: "Votre coiffeuse\nvient chez vous.",
           subtitle:
             "Angèle, maître artisan coiffeuse, coloriste et visagiste, arrive avec tout le matériel d'un salon : coupe, couleur et coiffage pour toute la famille.",
+          video: HERO_FILM.src,
           image: stock.heroStylist,
           ctaPrimary: { label: "Prendre rendez-vous", href: "/contact" },
           ctaSecondary: { label: "Voir les prestations et les tarifs", href: "/prestations" },
@@ -590,7 +598,7 @@ export const PAGES: PageDef[] = [
         fields: [{ name: "body", label: "Texte (les informations de l'entreprise proviennent des Paramètres)", type: "textarea", rows: 12 }],
         defaults: {
           body:
-            "Propriété intellectuelle\nL'ensemble des contenus du site (textes, logo, identité visuelle) est la propriété de Hair Home Concept, sauf mention contraire. Les photographies d'illustration proviennent de la banque d'images Unsplash et sont utilisées conformément à sa licence.\n\nResponsabilité\nLes informations et tarifs sont donnés à titre indicatif et peuvent être modifiés sans préavis. Une demande de rendez-vous envoyée via le site ne vaut pas réservation : elle est confirmée par Hair Home Concept.",
+            "Propriété intellectuelle\nL'ensemble des contenus du site (textes, logo, identité visuelle) est la propriété de Hair Home Concept, sauf mention contraire. Les photographies et le film d'illustration proviennent des banques d'images Unsplash et Pexels et sont utilisés conformément à leurs licences.\n\nResponsabilité\nLes informations et tarifs sont donnés à titre indicatif et peuvent être modifiés sans préavis. Une demande de rendez-vous envoyée via le site ne vaut pas réservation : elle est confirmée par Hair Home Concept.",
         },
       },
     ],

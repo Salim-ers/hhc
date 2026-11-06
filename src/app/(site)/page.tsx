@@ -48,6 +48,7 @@ export default async function HomePage() {
             key={key}
             title={s.text("title")}
             subtitle={s.text("subtitle")}
+            video={s.text("video")}
             image={s.image("image")}
             ctaPrimary={s.link("ctaPrimary")}
             ctaSecondary={s.link("ctaSecondary")}
