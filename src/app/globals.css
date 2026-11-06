@@ -1,0 +1,284 @@
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════════════════════════════════
+   HAIR HOME CONCEPT — Design system « Luxury Hair Editorial »
+   ══════════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* Fonds */
+  --color-noir: #101010;
+  --color-onyx: #171514;
+  --color-espresso: #382b27;
+  --color-cacao: #241c19;
+  --color-ivoire: #f5f0e8;
+  --color-lin: #faf8f4;
+  --color-sable: #e9e0d2;
+
+  /* Ors */
+  --color-or-logo: #d8a301; /* or exact du monogramme — réservé au logo */
+  --color-champagne: #c7a76c; /* accents sur fond sombre */
+  --color-champagne-clair: #e3cf9f;
+  --color-or-profond: #8a6a22; /* texte or sur fond clair (contraste AA) */
+
+  /* Textes */
+  --color-encre: #1d1715;
+  --color-taupe: #6f625a;
+  --color-brume: #b9ada0;
+
+  --font-display: var(--font-bodoni), "Bodoni Moda", "Didot", Georgia, serif;
+  --font-sans: var(--font-jost), "Jost", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-silk: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Rayon « arc HHC » : l'arc du C du monogramme, utilisé sur un seul angle */
+  --radius-arc: 999px;
+
+  --breakpoint-3xl: 1920px;
+}
+
+@layer base {
+  :root {
+    --gutter: clamp(1.25rem, 4vw, 4rem);
+    --header-h: 5rem;
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+  }
+
+  body {
+    background: var(--color-lin);
+    color: var(--color-encre);
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
+    line-height: 1.65;
+    font-feature-settings: "kern", "liga";
+  }
+
+  ::selection {
+    background: var(--color-champagne);
+    color: var(--color-noir);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-champagne);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    font-optical-sizing: auto;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  /* Filet de sécurité : aucun débordement horizontal (clip ne casse pas position: sticky). */
+  #contenu {
+    overflow-x: clip;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 1600px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* Échelle typographique éditoriale (rapport ~1.333, display en clamp) */
+  .t-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.9rem, 1.3rem + 6.4vw, 8.75rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .t-h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 1.5rem + 4.6vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.1rem, 1.4rem + 2.9vw, 4.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+  }
+  .t-h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
+    line-height: 1.1;
+  }
+  .t-lead {
+    font-size: clamp(1.08rem, 0.98rem + 0.45vw, 1.4rem);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* Surtitre : italique serif, en minuscules — jamais de capitales espacées */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.2rem);
+    line-height: 1.2;
+    color: var(--color-or-profond);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 2.25rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.7;
+  }
+  .on-dark .eyebrow,
+  .eyebrow.on-dark {
+    color: var(--color-champagne);
+  }
+
+  .on-dark {
+    color: var(--color-ivoire);
+  }
+  .on-dark .muted {
+    color: color-mix(in oklab, var(--color-ivoire) 68%, transparent);
+  }
+  .muted {
+    color: var(--color-taupe);
+  }
+
+  /* Filet doré */
+  .rule-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-champagne) 20%, var(--color-champagne) 80%, transparent);
+    opacity: 0.6;
+  }
+
+  /* L'arc HHC : un seul angle arrondi, comme le C du monogramme */
+  .arc-tl {
+    border-top-left-radius: min(50%, 22rem);
+  }
+  .arc-tr {
+    border-top-right-radius: min(50%, 22rem);
+  }
+
+  /* Points de conduite de la carte des tarifs */
+  .leader {
+    flex: 1 1 auto;
+    min-width: 1.5rem;
+    border-bottom: 1px dotted color-mix(in oklab, currentColor 35%, transparent);
+    transform: translateY(-0.35em);
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* Grain très léger sur les fonds sombres */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* Reflet métallique (loader, monogramme) */
+  .shine {
+    background: linear-gradient(
+      100deg,
+      #9b7410 0%,
+      #d8a301 30%,
+      #f7e7b0 46%,
+      #d8a301 58%,
+      #8e6a0c 100%
+    );
+    background-size: 250% 100%;
+  }
+
+  /* Liens soulignés à l'anglaise */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s var(--ease-luxe);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Voile du loader avant hydratation (évite tout flash) ; se retire seul après 4 s par sécurité. */
+html.intro body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: var(--color-noir);
+  animation: intro-fallback 0.5s ease 4s forwards;
+  pointer-events: none;
+}
+@keyframes intro-fallback {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
