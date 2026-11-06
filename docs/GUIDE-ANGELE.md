@@ -77,7 +77,7 @@ Dans le détail d'une photo : choisissez la catégorie puis **Ajouter à la gale
 ## Modifier un texte et publier
 
 1. Menu **Textes & pages**, choisissez la page (ex. *Accueil*).
-2. Ouvrez la section à modifier (ex. *Hero cinématique*).
+2. Ouvrez la section à modifier (ex. *Hero (haut de la page d'accueil)*).
 3. Modifiez les titres, textes, images ou boutons.
 4. Trois possibilités :
    - **Enregistrer le brouillon** : rien ne change pour vos visiteurs.

@@ -23,8 +23,9 @@ const RequestSchema = z.object({
   commune: z.string().trim().min(2, "Indiquez la commune d'intervention.").max(80),
   service: z.string().trim().min(2, "Choisissez une prestation.").max(120),
   preferredDate: z.union([z.literal(""), z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date invalide.")]),
-  timeSlot: z.string().trim().max(60),
-  message: z.string().trim().max(2000, "Message trop long (2000 caractères max)."),
+  // Champs facultatifs : un créneau non choisi n'est pas envoyé du tout par le navigateur.
+  timeSlot: z.string().trim().max(60).default(""),
+  message: z.string().trim().max(2000, "Message trop long (2000 caractères max).").default(""),
   consent: z.literal("on", { message: "Votre accord est nécessaire pour traiter la demande." }),
   sourcePage: z.string().max(80).optional(),
 });
@@ -63,20 +64,15 @@ export async function submitAppointmentRequest(_prev: RequestState, formData: Fo
     if (Number((r.rows[0] as { n: number }).n) >= 5) {
       return { status: "error", message: `Trop de demandes en peu de temps. Vous pouvez appeler directement le ${settings.business.phone}.` };
     }
-    await db.insert(schema.appointmentRequests).values({
-      id,
-      fullName: d.fullName,
-      phone: d.phone,
-      email: d.email || null,
-      commune: d.commune,
-      service: d.service,
-      preferredDate: d.preferredDate || null,
-      timeSlot: d.timeSlot || null,
-      message: d.message || null,
-      consentAt: new Date(),
-      sourcePage: d.sourcePage ?? null,
-      ipHash,
-    });
+    // Seules les colonnes accordées au rôle public sont nommées (migration 0001). `db.insert()` de Drizzle
+    // listerait aussi les colonnes laissées par défaut (statut, note interne…) et PostgreSQL refuserait l'écriture.
+    await db.execute(sql`
+      insert into ${schema.appointmentRequests}
+        (id, full_name, phone, email, commune, service, preferred_date, time_slot, message, consent_at, source_page, ip_hash)
+      values
+        (${id}, ${d.fullName}, ${d.phone}, ${d.email || null}, ${d.commune}, ${d.service}, ${d.preferredDate || null},
+         ${d.timeSlot || null}, ${d.message || null}, now(), ${d.sourcePage ?? null}, ${ipHash})
+    `);
   }
 
   const rows: [string, string][] = [

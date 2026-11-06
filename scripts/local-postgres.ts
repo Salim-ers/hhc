@@ -10,7 +10,15 @@ import fs from "node:fs";
 async function main() {
   const dir = process.env.LOCAL_PG_DIR ?? ".local-postgres";
   const fresh = !fs.existsSync(dir);
-  const pg = new EmbeddedPostgres({ databaseDir: dir, user: "postgres", password: "postgres", port: 5433, persistent: true });
+  const pg = new EmbeddedPostgres({
+    databaseDir: dir,
+    user: "postgres",
+    password: "postgres",
+    port: 5433,
+    persistent: true,
+    // Sous Windows, initdb choisit sinon l'encodage du système (WIN1252), qui refuse une partie des caractères des migrations.
+    initdbFlags: ["--encoding=UTF8", "--locale=C"],
+  });
   if (fresh) await pg.initialise();
   await pg.start();
   if (fresh) await pg.createDatabase("hhc");
